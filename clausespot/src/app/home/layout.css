@@ -1,0 +1,64 @@
+/* Paleta institucional: Azul-marinho: #1A365D, Azul-médio: #2B6CB0, Cinza-claro: #E2E8F0, Branco: #FFFFFF, Dourado: #C69F66 */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #1A365D 0%, #2B6CB0 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(26, 54, 93, 0.08);
+}
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #C69F66;
+}
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s;
+}
+.navbar-links a.active, .navbar-links a:hover {
+  border-bottom: 2px solid #C69F66;
+  color: #C69F66;
+}
+.main-content {
+  padding: 2rem 1rem;
+  min-height: 80vh;
+  background: #E2E8F0;
+}
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+.welcome-card {
+  background: #FFFFFF;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(26, 54, 93, 0.12);
+  text-align: center;
+  border: 1.5px solid #C69F66;
+}
+.welcome-card h1 {
+  font-size: 2.2rem;
+  color: #1A365D;
+  margin-bottom: 0.5rem;
+}
+.welcome-card h1 span {
+  color: #C69F66;
+}
+.welcome-card p {
+  color: #2B6CB0;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* Paleta institucional: Azul-marinho: #1A365D, Azul-médio: #2B6CB0, Cinza-claro: #E2E8F0, Branco: #FFFFFF, Dourado: #C69F66 */
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%);
+  background-image: url('/ClauseSpotBg.png'), linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login-app-title {
+  color: #C69F66;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 2.2rem;
+  text-shadow: 0 2px 8px rgba(26, 54, 93, 0.10);
+  text-align: center;
+}
+
+.login-form {
+  background: #FFFFFF;
+  padding: 3.5rem 2.8rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px 0 rgba(26, 54, 93, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 400px;
+  max-width: 95vw;
+  border: 1.5px solid #C69F66;
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #1A365D;
+  margin-bottom: 0.5rem;
+}
+
+.login-form input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  background: #F8FAFC;
+}
+
+.login-form input:focus {
+  border: 1.5px solid #2B6CB0;
+}
+
+.login-form button {
+  background: #2B6CB0;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.9rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-form button:hover {
+  background: #1A365D;
+}
+
+.login-error {
+  color: #C69F66;
+  background: #E2E8F0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  border: 1px solid #C69F66;
+}
+
