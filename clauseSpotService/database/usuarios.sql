@@ -1,0 +1,1238 @@
+INSERT INTO prontobook.usuarios.Perfis ([_estado],[_transaccion],[_usuario_criacao],[_data_criacao],[_usuario_modificacao],[_data_modificacao],nome,slug) VALUES
+   (N'CRIADO',N'SEEDS',0,'2023-11-26 23:30:07.48',NULL,NULL,N'ADMIN',N'ADM '),
+   (N'CRIADO',N'SEEDS',0,'2023-11-26 23:30:07.48',NULL,NULL,N'PACIENTE',N'P   '),
+   (N'CRIADO',N'SEEDS',0,'2023-11-26 23:30:07.48',NULL,NULL,N'ATENDENTE',N'A   '),
+   (N'CRIADO',N'SEEDS',0,'2023-11-26 23:30:07.48',NULL,NULL,N'MEDICO',N'M   ');
+
+
+
+
+
+INSERT INTO usuarios.modulos ("_estado","_transaccion","_usuario_criacao","_data_criacao","_usuario_modificacao","_data_modificacao","label",url,nome,propiedades,fk_modulo) VALUES
+   ('ATIVO','SEEDS',1,NULL,null,'Principal','/principal','Principal','{"orden": 1, "descripcion": "Sección principal"}',NULL),
+   ('ATIVO','SEEDS',1,NULL,null,'Inicio','/admin/home','inicio','{"icono": "home", "orden": 1, "descripcion": "Vista de bienvenida con características del sistema"}',1),
+   ('ATIVO','SEEDS',1,NULL,null,'Perfil','/admin/perfil','perfil','{"icono": "person", "orden": 2, "descripcion": "Información del perfil de usuario que inicio sesión"}',1),
+   ('ATIVO','SEEDS',1,NULL,null,'Productos','/admin/producto','perfil','{"icono": "store", "orden": 3, "descripcion": "Información Productos"}',1),
+   ('ATIVO','SEEDS',1,NULL,null,'Configuración','/configuraciones','configuraciones','{"orden": 2, "descripcion": "Sección de configuraciones"}',NULL),
+   ('ATIVO','SEEDS',1,NULL,null,'Usuarios','/admin/usuarios','usuarios','{"icono": "manage_accounts", "orden": 1, "descripcion": "Control de usuarios del sistema"}',5),
+   ('ATIVO','SEEDS',1,NULL,null,'Parámetros','/admin/parametros','parametros','{"icono": "tune", "orden": 2, "descripcion": "Parámetros generales del sistema"}',5),
+   ('ATIVO','SEEDS',1,NULL,null,'Módulos','/admin/modulos','modulos','{"icono": "widgets", "orden": 3, "descripcion": "Gestión de módulos"}',5),
+   ('ATIVO','SEEDS',1,NULL,null,'Políticas','/admin/politicas','politicas','{"icono": "verified_user", "orden": 4, "descripcion": "Control de permisos para los usuarios"}',5),
+   ('ATIVO','SEEDS',1,NULL,null,'Roles','/admin/roles','rol','{"icono": "admin_panel_settings", "orden": 5, "descripcion": "Control de roles para los usuarios"}',5);
+
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (1,N'p',N'PACIENTE',N'/admin/usuarios',N'read|update|create|delete',N'frontend'),
+	 (2,N'p',N'ADMINISTRADOR',N'/admin/usuarios',N'read|update|create|delete',N'frontend'),
+	 (3,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/usuarios/actualizar-encargado/entidad-encargado',N'read|create|update|delete',N'frontend'),
+	 (4,N'p',N'PACIENTE',N'/admin/usuarios/actualizar-usuario/imagen/data/:id',N'read|create|update|delete',N'frontend'),
+	 (5,N'p',N'ADMINISTRADOR',N'/admin/usuarios/actualizar-usuario/imagen/data/:id',N'read|create|update|delete',N'frontend'),
+	 (6,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/usuarios/actualizar-usuario/imagen/data/:id',N'read|create|update|delete',N'frontend'),
+	 (7,N'p',N'MEDICO',N'/admin/usuarios/actualizar-usuario/imagen/data/:id',N'read|create|update|delete',N'frontend'),
+	 (8,N'p',N'PACIENTE',N'/admin/usuarios/mostrar-datos/ciudadania/digital',N'read|create|update|delete',N'frontend'),
+	 (9,N'p',N'ADMINISTRADOR',N'/admin/usuarios/mostrar-datos/ciudadania/digital',N'read|create|update|delete',N'frontend'),
+	 (10,N'p',N'ENCARGADO',N'/admin/usuarios/mostrar-datos/ciudadania/digital',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (11,N'p',N'MEDICO',N'/admin/usuarios/mostrar-datos/ciudadania/digital',N'read|create|update|delete',N'frontend'),
+	 (12,N'p',N'PACIENTE',N'/admin/usuarios/asignar/entidad/subencargado',N'read|create|update|delete',N'frontend'),
+	 (13,N'p',N'ADMINISTRADOR',N'/admin/usuarios/asignar/entidad/subencargado',N'read|create|update|delete',N'frontend'),
+	 (14,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/usuarios/asignar/entidad/subencargado',N'read|create|update|delete',N'frontend'),
+	 (15,N'p',N'PACIENTE',N'/admin/usuarios/asignar/asignar/entidad-administrador',N'read|create|update|delete',N'frontend'),
+	 (16,N'p',N'ADMINISTRADOR',N'/admin/usuarios/asignar/asignar/entidad-administrador',N'read|create|update|delete',N'frontend'),
+	 (17,N'p',N'ENCARGADO',N'/admin/usuarios/asignar/asignar/entidad-administrador',N'read|create|update|delete',N'frontend'),
+	 (18,N'p',N'PACIENTE',N'/admin/usuarios/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (19,N'p',N'ADMINISTRADOR',N'/admin/usuarios/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (20,N'p',N'ENCARGADO',N'/admin/usuarios/image/remover/:id',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (21,N'p',N'MEDICO',N'/admin/usuarios/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (22,N'p',N'PACIENTE',N'/admin/persona-contacto/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (23,N'p',N'ADMINISTRADOR',N'/admin/persona-contacto/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (24,N'p',N'ENCARGADO',N'/admin/persona-contacto/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (25,N'p',N'MEDICO',N'/admin/persona-contacto/image/remover/:id',N'read|create|update|delete',N'frontend'),
+	 (26,N'p',N'PACIENTE',N'/admin/parametros',N'read|update|create',N'frontend'),
+	 (27,N'p',N'ADMINISTRADOR',N'/admin/parametros',N'read|update|create',N'frontend'),
+	 (28,N'p',N'PACIENTE',N'/admin/parametros-contactos',N'read|update|create',N'frontend'),
+	 (29,N'p',N'ADMINISTRADOR',N'/admin/parametros-contactos',N'read|update|create',N'frontend'),
+	 (30,N'p',N'PACIENTE',N'/admin/modulos',N'read|update|create',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (31,N'p',N'ADMINISTRADOR',N'/admin/modulos',N'read|update|create',N'frontend'),
+	 (32,N'p',N'PACIENTE',N'/admin/politicas',N'create|read|update|delete',N'frontend'),
+	 (33,N'p',N'ADMINISTRADOR',N'/admin/politicas',N'create|read|update|delete',N'frontend'),
+	 (34,N'p',N'PACIENTE',N'/admin/perfil',N'read|update',N'frontend'),
+	 (35,N'p',N'ADMINISTRADOR',N'/admin/perfil',N'read|update',N'frontend'),
+	 (36,N'p',N'ENCARGADO',N'/admin/perfil',N'read|update',N'frontend'),
+	 (37,N'p',N'MEDICO',N'/admin/perfil',N'read|create|update|delete',N'frontend'),
+	 (38,N'p',N'PACIENTE',N'/admin/usuarios/imagen',N'read|create|update|delete',N'frontend'),
+	 (39,N'p',N'ADMINISTRADOR',N'/admin/usuarios/imagen',N'read|create|update|delete',N'frontend'),
+	 (40,N'p',N'ENCARGADO',N'/admin/usuarios/imagen',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (41,N'p',N'MEDICO',N'/admin/usuarios/imagen',N'read|create|update|delete',N'frontend'),
+	 (42,N'p',N'PACIENTE',N'/admin/home',N'read',N'frontend'),
+	 (43,N'p',N'ADMINISTRADOR',N'/admin/home',N'read',N'frontend'),
+	 (44,N'p',N'ENCARGADO',N'/admin/home',N'read',N'frontend'),
+	 (45,N'p',N'MEDICO',N'/admin/home',N'read',N'frontend'),
+	 (46,N'p',N'PACIENTE',N'/admin/roles',N'read|create|update|delete',N'frontend'),
+	 (47,N'p',N'ADMINISTRADOR',N'/admin/roles',N'read|create|update|delete',N'frontend'),
+	 (48,N'p',N'PACIENTE',N'/admin/entidades',N'read|create|update|delete',N'frontend'),
+	 (49,N'p',N'ADMINISTRADOR',N'/admin/entidades',N'read|create|update|delete',N'frontend'),
+	 (50,N'p',N'ENCARGADO',N'/admin/entidades/:sigla/vista-publica',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (51,N'p',N'ENCARGADO',N'/admin/entidad',N'read|create|update|delete',N'frontend'),
+	 (52,N'p',N'PACIENTE',N'/admin/encargados',N'read|create|update|delete',N'frontend'),
+	 (53,N'p',N'ADMINISTRADOR',N'/admin/encargados',N'read|create|update|delete',N'frontend'),
+	 (54,N'p',N'ENCARGADO',N'/admin/unidades',N'read|create|update|delete',N'frontend'),
+	 (55,N'p',N'MEDICO',N'/admin/unidades',N'read|create|update|delete',N'frontend'),
+	 (56,N'p',N'ENCARGADO',N'/admin/sucursales',N'read|create|update|delete',N'frontend'),
+	 (57,N'p',N'MEDICO',N'/admin/sucursales',N'read|create|update|delete',N'frontend'),
+	 (58,N'p',N'ENCARGADO',N'/admin/sub-encargados',N'read|create|update|delete',N'frontend'),
+	 (59,N'p',N'ENCARGADO',N'/admin/contactos',N'read|create|update|delete',N'frontend'),
+	 (60,N'p',N'MEDICO',N'/admin/contactos',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (61,N'p',N'PACIENTE',N'/admin/segmentos',N'read|create|update|delete',N'frontend'),
+	 (62,N'p',N'ADMINISTRADOR',N'/admin/segmentos',N'read|create|update|delete',N'frontend'),
+	 (63,N'p',N'PACIENTE',N'/admin/municipios',N'read|create|update|delete',N'frontend'),
+	 (64,N'p',N'ADMINISTRADOR',N'/admin/municipios',N'read|create|update|delete',N'frontend'),
+	 (65,N'p',N'PACIENTE',N'/admin/departamentos',N'read|create|update|delete',N'frontend'),
+	 (66,N'p',N'ADMINISTRADOR',N'/admin/departamentos',N'read|create|update|delete',N'frontend'),
+	 (67,N'p',N'PACIENTE',N'/admin/sector',N'read|create|update|delete',N'frontend'),
+	 (68,N'p',N'ADMINISTRADOR',N'/admin/sector',N'read|create|update|delete',N'frontend'),
+	 (69,N'p',N'PACIENTE',N'/admin/departamento',N'read|create|update|delete',N'frontend'),
+	 (70,N'p',N'ADMINISTRADOR',N'/admin/departamento',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (71,N'p',N'ENCARGADO',N'/admin/departamento',N'read|create|update|delete',N'frontend'),
+	 (72,N'p',N'PACIENTE',N'/admin/listaContactos',N'read|create|update|delete',N'frontend'),
+	 (73,N'p',N'ADMINISTRADOR',N'/admin/listaContactos',N'read|create|update|delete',N'frontend'),
+	 (74,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/listaContactos',N'read|create|update|delete',N'frontend'),
+	 (75,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/mientidad',N'read|create|update|delete',N'frontend'),
+	 (76,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/contacto-mae',N'read|create|update|delete',N'frontend'),
+	 (77,N'p',N'MEDICO',N'/admin/contacto-mae',N'read|create|update|delete',N'frontend'),
+	 (78,N'p',N'PACIENTE',N'/admin/responsables-unidades',N'read|create|update|delete',N'frontend'),
+	 (79,N'p',N'ADMINISTRADOR',N'/admin/responsables-unidades',N'read|create|update|delete',N'frontend'),
+	 (80,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/admin/persona-contacto-responsables',N'read|create|update|delete',N'frontend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (81,N'p',N'MEDICO',N'/admin/persona-contacto-responsables',N'read|create|update|delete',N'frontend'),
+	 (82,N'p',N'PACIENTE',N'/api/autorizacion/politicas',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (83,N'p',N'ADMINISTRADOR',N'/api/autorizacion/politicas',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (84,N'p',N'PACIENTE',N'/api/autorizacion/modulos',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (85,N'p',N'ADMINISTRADOR',N'/api/autorizacion/modulos',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (86,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/autorizacion/modulos',N'GET',N'backend'),
+	 (87,N'p',N'PACIENTE',N'/api/autorizacion/modulos/:id',N'PATCH',N'backend'),
+	 (88,N'p',N'ADMINISTRADOR',N'/api/autorizacion/modulos/:id',N'PATCH',N'backend'),
+	 (89,N'p',N'PACIENTE',N'/api/autorizacion/modulos/:id/activacion',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (90,N'p',N'ADMINISTRADOR',N'/api/autorizacion/modulos/:id/activacion',N'GET|POST|DELETE|PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (91,N'p',N'PACIENTE',N'/api/autorizacion/modulos/:id/inactivacion',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (92,N'p',N'ADMINISTRADOR',N'/api/autorizacion/modulos/:id/inactivacion',N'GET|POST|DELETE|PATCH',N'backend'),
+	 (93,N'p',N'PACIENTE',N'/api/autorizacion/roles',N'GET|POST',N'backend'),
+	 (94,N'p',N'ADMINISTRADOR',N'/api/autorizacion/roles',N'GET|POST',N'backend'),
+	 (95,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/autorizacion/roles',N'GET',N'backend'),
+	 (96,N'p',N'PACIENTE',N'/api/autorizacion/roles/todos',N'GET|POST',N'backend'),
+	 (97,N'p',N'ADMINISTRADOR',N'/api/autorizacion/roles/todos',N'GET|POST',N'backend'),
+	 (98,N'p',N'PACIENTE',N'/api/autorizacion/roles/:id',N'PATCH',N'backend'),
+	 (99,N'p',N'ADMINISTRADOR',N'/api/autorizacion/roles/:id',N'PATCH',N'backend'),
+	 (100,N'p',N'PACIENTE',N'/api/autorizacion/roles/:id/activacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (101,N'p',N'ADMINISTRADOR',N'/api/autorizacion/roles/:id/activacion',N'PATCH',N'backend'),
+	 (102,N'p',N'PACIENTE',N'/api/autorizacion/roles/:id/inactivacion',N'PATCH',N'backend'),
+	 (103,N'p',N'ADMINISTRADOR',N'/api/autorizacion/roles/:id/inactivacion',N'PATCH',N'backend'),
+	 (104,N'p',N'PACIENTE',N'/api/usuarios',N'GET|POST',N'backend'),
+	 (105,N'p',N'ADMINISTRADOR',N'/api/usuarios',N'GET|POST',N'backend'),
+	 (106,N'p',N'ENCARGADO',N'/api/usuarios',N'GET',N'backend'),
+	 (107,N'p',N'PACIENTE',N'/api/usuarios/:id',N'PATCH',N'backend'),
+	 (108,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id',N'PATCH',N'backend'),
+	 (109,N'p',N'PACIENTE',N'/api/usuarios/:id/roles',N'PATCH',N'backend'),
+	 (110,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/roles',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (111,N'p',N'PACIENTE',N'/api/usuarios/:id/actualizar-encargado',N'PATCH',N'backend'),
+	 (112,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/actualizar-encargado',N'PATCH',N'backend'),
+	 (113,N'p',N'PACIENTE',N'/api/usuarios/:id/actualizar-rol',N'PATCH',N'backend'),
+	 (114,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/actualizar-rol',N'PATCH',N'backend'),
+	 (115,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/:id/actualizar-rol',N'PATCH',N'backend'),
+	 (116,N'p',N'MEDICO',N'/api/usuarios/:id/actualizar-rol',N'PATCH',N'backend'),
+	 (117,N'p',N'USUARIO',N'/api/usuarios/:id/actualizar-rol',N'PATCH',N'backend'),
+	 (118,N'p',N'PACIENTE',N'/api/usuarios/:id/actualizar-rol-subencargado',N'PATCH',N'backend'),
+	 (119,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/actualizar-rol-subencargado',N'PATCH',N'backend'),
+	 (120,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/:id/actualizar-rol-subencargado',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (121,N'p',N'MEDICO',N'/api/usuarios/:id/actualizar-rol-subencargado',N'PATCH',N'backend'),
+	 (122,N'p',N'USUARIO',N'/api/usuarios/:id/actualizar-rol-subencargado',N'PATCH',N'backend'),
+	 (123,N'p',N'PACIENTE',N'/api/usuarios/cuenta/ciudadania',N'POST',N'backend'),
+	 (124,N'p',N'ADMINISTRADOR',N'/api/usuarios/cuenta/ciudadania',N'POST',N'backend'),
+	 (125,N'p',N'PACIENTE',N'/api/usuarios/:id/activacion',N'PATCH',N'backend'),
+	 (126,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/activacion',N'PATCH',N'backend'),
+	 (127,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/:id/activacion',N'PATCH',N'backend'),
+	 (128,N'p',N'PACIENTE',N'/api/usuarios/:id/inactivacion',N'PATCH',N'backend'),
+	 (129,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/inactivacion',N'PATCH',N'backend'),
+	 (130,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/:id/inactivacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (131,N'p',N'PACIENTE',N'/api/usuarios/:id/desasignar-encargado',N'PATCH',N'backend'),
+	 (132,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/desasignar-encargado',N'PATCH',N'backend'),
+	 (133,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/:id/desasignar-subencargado',N'PATCH',N'backend'),
+	 (134,N'p',N'PACIENTE',N'/api/usuarios/:id/restauracion',N'PATCH',N'backend'),
+	 (135,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/restauracion',N'PATCH',N'backend'),
+	 (136,N'p',N'ENCARGADO',N'/api/usuarios/listar-sub-encargado-activo',N'GET',N'backend'),
+	 (137,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/listar-sub-encargado-pendiente',N'GET',N'backend'),
+	 (138,N'p',N'PACIENTE',N'/api/usuarios/:id/reenviar',N'PATCH',N'backend'),
+	 (139,N'p',N'ADMINISTRADOR',N'/api/usuarios/:id/reenviar',N'PATCH',N'backend'),
+	 (140,N'p',N'PACIENTE',N'/api/usuarios/mostrar-datos/ciudadania/digital',N'GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (141,N'p',N'ADMINISTRADOR',N'/api/usuarios/mostrar-datos/ciudadania/digital',N'GET',N'backend'),
+	 (142,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/mostrar-datos/ciudadania/digital',N'GET',N'backend'),
+	 (143,N'p',N'MEDICO',N'/api/usuarios/mostrar-datos/ciudadania/digital',N'GET',N'backend'),
+	 (144,N'p',N'PACIENTE',N'/api/parametros',N'GET|POST',N'backend'),
+	 (145,N'p',N'ADMINISTRADOR',N'/api/parametros',N'GET|POST',N'backend'),
+	 (146,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/parametros',N'GET|POST',N'backend'),
+	 (147,N'p',N'PACIENTE',N'/api/parametros/:id',N'PATCH',N'backend'),
+	 (148,N'p',N'ADMINISTRADOR',N'/api/parametros/:id',N'PATCH',N'backend'),
+	 (149,N'p',N'PACIENTE',N'/api/parametros/:id/activacion',N'PATCH',N'backend'),
+	 (150,N'p',N'ADMINISTRADOR',N'/api/parametros/:id/activacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (151,N'p',N'PACIENTE',N'/api/parametros/:id/inactivacion',N'PATCH',N'backend'),
+	 (152,N'p',N'ADMINISTRADOR',N'/api/parametros/:id/inactivacion',N'PATCH',N'backend'),
+	 (153,N'p',N'*',N'/api/parametros/:grupo/listado',N'GET',N'backend'),
+	 (154,N'p',N'PACIENTE',N'/api/parametros-contactos',N'GET|POST',N'backend'),
+	 (155,N'p',N'ADMINISTRADOR',N'/api/parametros-contactos',N'GET|POST',N'backend'),
+	 (156,N'p',N'ENCARGADO',N'/api/parametros-contactos',N'GET|POST',N'backend'),
+	 (157,N'p',N'PACIENTE',N'/api/parametros-contactos/:id',N'PATCH',N'backend'),
+	 (158,N'p',N'ADMINISTRADOR',N'/api/parametros-contactos/:id',N'PATCH',N'backend'),
+	 (159,N'p',N'PACIENTE',N'/api/parametros-contactos/:id/activacion',N'PATCH',N'backend'),
+	 (160,N'p',N'ADMINISTRADOR',N'/api/parametros-contactos/:id/activacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (161,N'p',N'PACIENTE',N'/api/parametros-contactos/:id/inactivacion',N'PATCH',N'backend'),
+	 (162,N'p',N'ADMINISTRADOR',N'/api/parametros-contactos/:id/inactivacion',N'PATCH',N'backend'),
+	 (163,N'p',N'*',N'/api/parametros-contactos/:grupo/listado',N'GET',N'backend'),
+	 (164,N'p',N'*',N'/api/autorizacion/permisos',N'GET',N'backend'),
+	 (165,N'p',N'*',N'/api/usuarios/cuenta/perfil',N'GET',N'backend'),
+	 (166,N'p',N'PACIENTE',N'/api/usuarios/imagen',N'POST',N'backend'),
+	 (167,N'p',N'ADMINISTRADOR',N'/api/usuarios/imagen',N'POST',N'backend'),
+	 (168,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/imagen',N'POST',N'backend'),
+	 (169,N'p',N'MEDICO',N'/api/usuarios/imagen',N'POST',N'backend'),
+	 (170,N'p',N'*',N'/api/usuarios/cuenta/contrasena',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (171,N'p',N'PACIENTE',N'/api/usuarios/asignar/entidad',N'POST',N'backend'),
+	 (172,N'p',N'ADMINISTRADOR',N'/api/usuarios/asignar/entidad',N'POST',N'backend'),
+	 (173,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/asignar/entidad',N'POST',N'backend'),
+	 (174,N'p',N'PACIENTE',N'/api/usuarios/asignar/entidad-administrador',N'POST',N'backend'),
+	 (175,N'p',N'ADMINISTRADOR',N'/api/usuarios/asignar/entidad-administrador',N'POST',N'backend'),
+	 (176,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/asignar/entidad-administrador',N'POST',N'backend'),
+	 (177,N'p',N'PACIENTE',N'/api/usuarios/asignar/entidad/subencargado',N'POST',N'backend'),
+	 (178,N'p',N'ADMINISTRADOR',N'/api/usuarios/asignar/entidad/subencargado',N'POST',N'backend'),
+	 (179,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/asignar/entidad/subencargado',N'POST',N'backend'),
+	 (180,N'p',N'PACIENTE',N'/api/usuarios/editar/entidad/subencargado',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (181,N'p',N'ADMINISTRADOR',N'/api/usuarios/editar/entidad/subencargado',N'PATCH',N'backend'),
+	 (182,N'p',N'ATENDENTE',N'/api/usuarios/editar/entidad/subencargado',N'PATCH',N'backend'),
+	 (183,N'p',N'PACIENTE',N'/api/entidades',N'GET|POST',N'backend'),
+	 (184,N'p',N'ADMINISTRADOR',N'/api/entidades',N'GET|POST',N'backend'),
+	 (185,N'p',N'PACIENTE',N'/api/entidades/listar/sinasignar',N'GET',N'backend'),
+	 (186,N'p',N'ADMINISTRADOR',N'/api/entidades/listar/sinasignar',N'GET',N'backend'),
+	 (187,N'p',N'PACIENTE',N'/api/entidades/listar',N'GET|POST',N'backend'),
+	 (188,N'p',N'ADMINISTRADOR',N'/api/entidades/listar',N'GET|POST',N'backend'),
+	 (189,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/entidades/listar',N'GET|POST',N'backend'),
+	 (190,N'p',N'PACIENTE',N'/api/entidades/:id',N'PATCH|GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (191,N'p',N'ADMINISTRADOR',N'/api/entidades/:id',N'PATCH|GET',N'backend'),
+	 (192,N'p',N'PACIENTE',N'/api/entidades/:id/activacion',N'PATCH',N'backend'),
+	 (193,N'p',N'ADMINISTRADOR',N'/api/entidades/:id/activacion',N'PATCH',N'backend'),
+	 (194,N'p',N'PACIENTE',N'/api/entidades/:id/inactivacion',N'PATCH',N'backend'),
+	 (195,N'p',N'ADMINISTRADOR',N'/api/entidades/:id/inactivacion',N'PATCH',N'backend'),
+	 (196,N'p',N'PACIENTE',N'/api/entidades/:sigla/vista-publica',N'PATCH',N'backend'),
+	 (197,N'p',N'ADMINISTRADOR',N'/api/entidades/:sigla/vista-publica',N'PATCH',N'backend'),
+	 (198,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/entidades/:sigla/vista-publica',N'PATCH',N'backend'),
+	 (199,N'p',N'PACIENTE',N'/api/entidades/listar/asignados',N'GET',N'backend'),
+	 (200,N'p',N'ADMINISTRADOR',N'/api/entidades/listar/asignados',N'GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (201,N'p',N'PACIENTE',N'/api/entidades/listar/asignado-pendiente',N'GET',N'backend'),
+	 (202,N'p',N'ADMINISTRADOR',N'/api/entidades/listar/asignado-pendiente',N'GET',N'backend'),
+	 (203,N'p',N'PACIENTE',N'/api/entidades/imagen2',N'PATCH|POST',N'backend'),
+	 (204,N'p',N'ADMINISTRADOR',N'/api/entidades/imagen2',N'PATCH|POST',N'backend'),
+	 (205,N'p',N'ATENDENTE',N'/api/entidades/imagen2',N'PATCH|POST',N'backend'),
+	 (206,N'p',N'MEDICO',N'/api/entidades/imagen2',N'PATCH|POST',N'backend'),
+	 (207,N'p',N'PACIENTE',N'/api/entidades/actualizar-imagen/entidad/:id',N'PATCH|POST',N'backend'),
+	 (208,N'p',N'ADMINISTRADOR',N'/api/entidades/actualizar-imagen/entidad/:id',N'PATCH|POST',N'backend'),
+	 (209,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/entidades/actualizar-imagen/entidad/:id',N'PATCH|POST',N'backend'),
+	 (210,N'p',N'MEDICO',N'/api/entidades/actualizar-imagen/entidad/:id',N'PATCH|POST',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (211,N'p',N'PACIENTE',N'/api/encargados',N'GET|POST',N'backend'),
+	 (212,N'p',N'ADMINISTRADOR',N'/api/encargados',N'GET|POST',N'backend'),
+	 (213,N'p',N'PACIENTE',N'/api/usuarios/listar-encargados',N'GET',N'backend'),
+	 (214,N'p',N'ADMINISTRADOR',N'/api/usuarios/listar-encargados',N'GET',N'backend'),
+	 (215,N'p',N'PACIENTE',N'/api/usuarios/listar-encargados-pendientes',N'GET',N'backend'),
+	 (216,N'p',N'ADMINISTRADOR',N'/api/usuarios/listar-encargados-pendientes',N'GET',N'backend'),
+	 (217,N'p',N'PACIENTE',N'/api/usuarios/listar-encargados-sinasignar',N'GET',N'backend'),
+	 (218,N'p',N'ADMINISTRADOR',N'/api/usuarios/listar-encargados-sinasignar',N'GET',N'backend'),
+	 (219,N'p',N'PACIENTE',N'/api/usuarios/actualizar-encargado/entidad-encargado',N'PATCH',N'backend'),
+	 (220,N'p',N'ADMINISTRADOR',N'/api/usuarios/actualizar-encargado/entidad-encargado',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (221,N'p',N'PACIENTE',N'/api/usuarios/actualizar-usuario/imagen/data/:id',N'PATCH',N'backend'),
+	 (222,N'p',N'ADMINISTRADOR',N'/api/usuarios/actualizar-usuario/imagen/data/:id',N'PATCH',N'backend'),
+	 (223,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/usuarios/actualizar-usuario/imagen/data/:id',N'PATCH',N'backend'),
+	 (224,N'p',N'MEDICO',N'/api/usuarios/actualizar-usuario/imagen/data/:id',N'PATCH',N'backend'),
+	 (225,N'p',N'PACIENTE',N'/api/encargados/:id',N'PATCH',N'backend'),
+	 (226,N'p',N'ADMINISTRADOR',N'/api/encargados/:id',N'PATCH',N'backend'),
+	 (227,N'p',N'PACIENTE',N'/api/encargados/:id/activacion',N'PATCH',N'backend'),
+	 (228,N'p',N'ADMINISTRADOR',N'/api/encargados/:id/activacion',N'PATCH',N'backend'),
+	 (229,N'p',N'PACIENTE',N'/api/encargados/:id/inactivacion',N'PATCH',N'backend'),
+	 (230,N'p',N'ADMINISTRADOR',N'/api/encargados/:id/inactivacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (231,N'p',N'PACIENTE',N'/api/unidades',N'PATCH',N'backend'),
+	 (232,N'p',N'ADMINISTRADOR',N'/api/unidades',N'PATCH',N'backend'),
+	 (233,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/unidades',N'GET|POST',N'backend'),
+	 (234,N'p',N'MEDICO',N'/api/unidades',N'GET|POST',N'backend'),
+	 (235,N'p',N'PACIENTE',N'/api/unidades/lista',N'GET|POST',N'backend'),
+	 (236,N'p',N'ADMINISTRADOR',N'/api/unidades/lista',N'GET|POST',N'backend'),
+	 (237,N'p',N'ATENDENTE',N'/api/unidades/lista',N'GET|POST',N'backend'),
+	 (238,N'p',N'MEDICO',N'/api/unidades/lista',N'GET',N'backend'),
+	 (239,N'p',N'PACIENTE',N'/api/unidades/:id',N'PATCH',N'backend'),
+	 (240,N'p',N'ADMINISTRADOR',N'/api/unidades/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (241,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/unidades/:id',N'PATCH',N'backend'),
+	 (242,N'p',N'MEDICO',N'/api/unidades/:id',N'PATCH',N'backend'),
+	 (243,N'p',N'PACIENTE',N'/api/unidades/:id/activacion',N'PATCH',N'backend'),
+	 (244,N'p',N'ADMINISTRADOR',N'/api/unidades/:id/activacion',N'PATCH',N'backend'),
+	 (245,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/unidades/:id/activacion',N'PATCH',N'backend'),
+	 (246,N'p',N'PACIENTE',N'/api/unidades/:id/inactivacion',N'PATCH',N'backend'),
+	 (247,N'p',N'ADMINISTRADOR',N'/api/unidades/:id/inactivacion',N'PATCH',N'backend'),
+	 (248,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/unidades/:id/inactivacion',N'PATCH',N'backend'),
+	 (249,N'p',N'PACIENTE',N'/api/unidades/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (250,N'p',N'ADMINISTRADOR',N'/api/unidades/:ids/inactivacion-masivo',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (251,N'p',N'ENCARGADO',N'/api/unidades/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (252,N'p',N'MEDICO',N'/api/unidades/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (253,N'p',N'PACIENTE',N'/api/unidades/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (254,N'p',N'ADMINISTRADOR',N'/api/unidades/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (255,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/unidades/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (256,N'p',N'MEDICO',N'/api/unidades/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (257,N'p',N'PACIENTE',N'/api/sucursales',N'GET|POST',N'backend'),
+	 (258,N'p',N'ADMINISTRADOR',N'/api/sucursales',N'GET|POST',N'backend'),
+	 (259,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales',N'GET|POST',N'backend'),
+	 (260,N'p',N'MEDICO',N'/api/sucursales',N'GET|POST',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (261,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/pendiente',N'POST',N'backend'),
+	 (262,N'p',N'MEDICO',N'/api/sucursales/pendiente',N'POST',N'backend'),
+	 (263,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/pendiente/:id',N'PATCH',N'backend'),
+	 (264,N'p',N'MEDICO',N'/api/sucursales/pendiente/:id',N'PATCH',N'backend'),
+	 (265,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/publicar/:id',N'PATCH',N'backend'),
+	 (266,N'p',N'MEDICO',N'/api/sucursales/publicar/:id',N'PATCH',N'backend'),
+	 (267,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/no-publicar/:id',N'PATCH',N'backend'),
+	 (268,N'p',N'MEDICO',N'/api/sucursales/no-publicar/:id',N'PATCH',N'backend'),
+	 (269,N'p',N'PACIENTE',N'/api/sucursales/:id',N'PATCH',N'backend'),
+	 (270,N'p',N'ADMINISTRADOR',N'/api/sucursales/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (271,N'p',N'ENCARGADO',N'/api/sucursales/:id',N'PATCH',N'backend'),
+	 (272,N'p',N'MEDICO',N'/api/sucursales/:id',N'PATCH',N'backend'),
+	 (273,N'p',N'PACIENTE',N'/api/sucursales/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (274,N'p',N'ADMINISTRADOR',N'/api/sucursales/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (275,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (276,N'p',N'MEDICO',N'/api/sucursales/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (277,N'p',N'PACIENTE',N'/api/sucursales/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (278,N'p',N'ADMINISTRADOR',N'/api/sucursales/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (279,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (280,N'p',N'MEDICO',N'/api/sucursales/:ids/inactivacion-masivo',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (281,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/listar/:entidad',N'GET',N'backend'),
+	 (282,N'p',N'MEDICO',N'/api/sucursales/listar/:entidad',N'GET',N'backend'),
+	 (283,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/listar-sucural-funcionario/:id',N'GET',N'backend'),
+	 (284,N'p',N'MEDICO',N'/api/sucursales/listar-sucural-funcionario/:id',N'GET',N'backend'),
+	 (285,N'p',N'ENCARGADO',N'/api/sucursales/:id/activacion',N'PATCH',N'backend'),
+	 (286,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/imagen',N'POST',N'backend'),
+	 (287,N'p',N'MEDICO',N'/api/sucursales/imagen',N'POST',N'backend'),
+	 (288,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/cambiar-principal/:id',N'PATCH',N'backend'),
+	 (289,N'p',N'MEDICO',N'/api/sucursales/cambiar-principal/:id',N'PATCH',N'backend'),
+	 (290,N'p',N'ENCARGADO',N'/api/sucursales/cambiar-principal-sucursal/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (291,N'p',N'MEDICO',N'/api/sucursales/cambiar-principal-sucursal/:id',N'PATCH',N'backend'),
+	 (292,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/imagen/remover/:id',N'PATCH',N'backend'),
+	 (293,N'p',N'MEDICO',N'/api/sucursales/imagen/remover/:id',N'PATCH',N'backend'),
+	 (294,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/sucursales/:id/inactivacion',N'PATCH',N'backend'),
+	 (295,N'p',N'PACIENTE',N'/api/entidades-redes-sociales',N'GET|POST',N'backend'),
+	 (296,N'p',N'ADMINISTRADOR',N'/api/entidades-redes-sociales',N'GET|POST',N'backend'),
+	 (297,N'p',N'PACIENTE',N'/api/entidades-redes-sociales/:id',N'PATCH',N'backend'),
+	 (298,N'p',N'ADMINISTRADOR',N'/api/entidades-redes-sociales/:id',N'PATCH',N'backend'),
+	 (299,N'p',N'PACIENTE',N'/api/entidades-redes-sociales/:id/activacion',N'PATCH',N'backend'),
+	 (300,N'p',N'ADMINISTRADOR',N'/api/entidades-redes-sociales/:id/activacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (301,N'p',N'PACIENTE',N'/api/entidades-redes-sociales/:id/inactivacion',N'PATCH',N'backend'),
+	 (302,N'p',N'ADMINISTRADOR',N'/api/entidades-redes-sociales/:id/inactivacion',N'PATCH',N'backend'),
+	 (303,N'p',N'PACIENTE',N'/api/persona-contacto',N'GET|POST',N'backend'),
+	 (304,N'p',N'ADMINISTRADOR',N'/api/persona-contacto',N'GET|POST',N'backend'),
+	 (305,N'p',N'ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ENCARGADO
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE
+ATENDENTE',N'/api/persona-contacto',N'GET|POST',N'backend'),
+	 (306,N'p',N'MEDICO',N'/api/persona-contacto',N'GET|POST',N'backend'),
+	 (307,N'p',N'ENCARGADO',N'/api/persona-contacto/lista',N'GET',N'backend'),
+	 (308,N'p',N'MEDICO',N'/api/persona-contacto/lista',N'GET',N'backend'),
+	 (309,N'p',N'ENCARGADO',N'/api/persona-contacto/lista-responsables',N'GET',N'backend'),
+	 (310,N'p',N'MEDICO',N'/api/persona-contacto/lista-responsables',N'GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (311,N'p',N'ENCARGADO',N'/api/persona-contacto/listar-mae',N'GET',N'backend'),
+	 (312,N'p',N'MEDICO',N'/api/persona-contacto/listar-mae',N'GET',N'backend'),
+	 (313,N'p',N'PACIENTE',N'/api/persona-contacto/imagen',N'GET|POST',N'backend'),
+	 (314,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/imagen',N'GET|POST',N'backend'),
+	 (315,N'p',N'ENCARGADO',N'/api/persona-contacto/imagen',N'GET|POST',N'backend'),
+	 (316,N'p',N'MEDICO',N'/api/persona-contacto/imagen',N'GET|POST',N'backend'),
+	 (317,N'p',N'PACIENTE',N'/api/persona-contacto/:id',N'PATCH',N'backend'),
+	 (318,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/:id',N'PATCH',N'backend'),
+	 (319,N'p',N'ENCARGADO',N'/api/persona-contacto/:id',N'PATCH',N'backend'),
+	 (320,N'p',N'MEDICO',N'/api/persona-contacto/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (321,N'p',N'PACIENTE',N'/api/persona-contacto/lista-privada',N'GET|POST',N'backend'),
+	 (322,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/lista-privada',N'GET|POST',N'backend'),
+	 (323,N'p',N'ENCARGADO',N'/api/persona-contacto/lista-privada',N'GET|POST',N'backend'),
+	 (324,N'p',N'MEDICO',N'/api/persona-contacto/lista-privada',N'GET|POST',N'backend'),
+	 (325,N'p',N'USUARIO',N'/api/persona-contacto/lista-privada',N'GET|POST',N'backend'),
+	 (326,N'p',N'PACIENTE',N'/api/persona-contacto/:id/activacion',N'PATCH',N'backend'),
+	 (327,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/:id/activacion',N'PATCH',N'backend'),
+	 (328,N'p',N'ENCARGADO',N'/api/persona-contacto/:id/activacion',N'PATCH',N'backend'),
+	 (329,N'p',N'PACIENTE',N'/api/persona-contacto/:id/inactivacion',N'PATCH',N'backend'),
+	 (330,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/:id/inactivacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (331,N'p',N'ENCARGADO',N'/api/persona-contacto/:id/inactivacion',N'PATCH',N'backend'),
+	 (332,N'p',N'PACIENTE',N'/api/persona-contacto/mae',N'GET|POST',N'backend'),
+	 (333,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/mae',N'GET|POST',N'backend'),
+	 (334,N'p',N'ENCARGADO',N'/api/persona-contacto/mae',N'GET|POST',N'backend'),
+	 (335,N'p',N'MEDICO',N'/api/persona-contacto/mae',N'GET|POST',N'backend'),
+	 (336,N'p',N'PACIENTE',N'/api/persona-contacto/:id/clicks',N'PATCH',N'backend'),
+	 (337,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/:id/clicks',N'PATCH',N'backend'),
+	 (338,N'p',N'ENCARGADO',N'/api/persona-contacto/:id/clicks',N'PATCH',N'backend'),
+	 (339,N'p',N'MEDICO',N'/api/persona-contacto/:id/clicks',N'PATCH',N'backend'),
+	 (340,N'p',N'USUARIO',N'/api/persona-contacto/:id/clicks',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (341,N'p',N'ENCARGADO',N'/api/persona-contacto/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (342,N'p',N'MEDICO',N'/api/persona-contacto/:ids/inactivacion-masivo',N'PATCH',N'backend'),
+	 (343,N'p',N'ENCARGADO',N'/api/persona-contacto/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (344,N'p',N'MEDICO',N'/api/persona-contacto/:ids/activacion-masivo',N'PATCH',N'backend'),
+	 (345,N'p',N'ENCARGADO',N'/api/personas-responsables',N'POST',N'backend'),
+	 (346,N'p',N'MEDICO',N'/api/personas-responsables',N'POST',N'backend'),
+	 (347,N'p',N'ENCARGADO',N'/api/personas-responsables/:id',N'PATCH',N'backend'),
+	 (348,N'p',N'MEDICO',N'/api/personas-responsables/:id',N'PATCH',N'backend'),
+	 (349,N'p',N'ENCARGADO',N'/api/persona-contacto/baja-funcionario/:id',N'PATCH',N'backend'),
+	 (350,N'p',N'MEDICO',N'/api/persona-contacto/baja-funcionario/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (351,N'p',N'ENCARGADO',N'/api/persona-contacto/lista-descarga-funcionarios/:id',N'GET',N'backend'),
+	 (352,N'p',N'MEDICO',N'/api/persona-contacto/lista-descarga-funcionarios/:id',N'GET',N'backend'),
+	 (353,N'p',N'PACIENTE',N'/api/medio-contacto',N'GET|POST',N'backend'),
+	 (354,N'p',N'ADMINISTRADOR',N'/api/medio-contacto',N'GET|POST',N'backend'),
+	 (355,N'p',N'MEDICO',N'/api/medio-contacto',N'GET|POST',N'backend'),
+	 (356,N'p',N'PACIENTE',N'/api/medio-contacto/:id',N'PATCH',N'backend'),
+	 (357,N'p',N'ADMINISTRADOR',N'/api/medio-contacto/:id',N'PATCH',N'backend'),
+	 (358,N'p',N'MEDICO',N'/api/medio-contacto/:id',N'PATCH',N'backend'),
+	 (359,N'p',N'PACIENTE',N'/api/medio-contacto/:id/activacion',N'PATCH',N'backend'),
+	 (360,N'p',N'ADMINISTRADOR',N'/api/medio-contacto/:id/activacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (361,N'p',N'PACIENTE',N'/api/medio-contacto/:id/inactivacion',N'PATCH',N'backend'),
+	 (362,N'p',N'ADMINISTRADOR',N'/api/medio-contacto/:id/inactivacion',N'PATCH',N'backend'),
+	 (363,N'p',N'PACIENTE',N'/api/horarios',N'GET|POST',N'backend'),
+	 (364,N'p',N'ADMINISTRADOR',N'/api/horarios',N'GET|POST',N'backend'),
+	 (365,N'p',N'PACIENTE',N'/api/contactos/entidad/:sigla',N'GET',N'backend'),
+	 (366,N'p',N'ADMINISTRADOR',N'/api/contactos/entidad/:sigla',N'GET',N'backend'),
+	 (367,N'p',N'ENCARGADO',N'/api/contactos/entidad/:sigla',N'GET',N'backend'),
+	 (368,N'p',N'MEDICO',N'/api/contactos/entidad/:sigla',N'GET',N'backend'),
+	 (369,N'p',N'USUARIO',N'/api/contactos/entidad/:sigla',N'GET',N'backend'),
+	 (370,N'p',N'PACIENTE',N'/api/sector',N'GET|POST',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (371,N'p',N'ADMINISTRADOR',N'/api/sector',N'GET|POST',N'backend'),
+	 (372,N'p',N'ENCARGADO',N'/api/sector',N'GET',N'backend'),
+	 (373,N'p',N'PACIENTE',N'/api/sector/:id',N'PATCH',N'backend'),
+	 (374,N'p',N'ADMINISTRADOR',N'/api/sector/:id',N'PATCH',N'backend'),
+	 (375,N'p',N'PACIENTE',N'/api/sector/:id/activacion',N'PATCH',N'backend'),
+	 (376,N'p',N'ADMINISTRADOR',N'/api/sector/:id/activacion',N'PATCH',N'backend'),
+	 (377,N'p',N'PACIENTE',N'/api/sector/:id/inactivacion',N'PATCH',N'backend'),
+	 (378,N'p',N'ADMINISTRADOR',N'/api/sector/:id/inactivacion',N'PATCH',N'backend'),
+	 (379,N'p',N'PACIENTE',N'/api/municipio',N'GET|POST',N'backend'),
+	 (380,N'p',N'ADMINISTRADOR',N'/api/municipio',N'GET|POST',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (381,N'p',N'PACIENTE',N'/api/municipio/:id',N'PATCH',N'backend'),
+	 (382,N'p',N'ADMINISTRADOR',N'/api/municipio/:id',N'PATCH',N'backend'),
+	 (383,N'p',N'PACIENTE',N'/api/municipio/:id/activacion',N'GET|PATCH|POST',N'backend'),
+	 (384,N'p',N'ADMINISTRADOR',N'/api/municipio/:id/activacion',N'GET|PATCH|POST',N'backend'),
+	 (385,N'p',N'PACIENTE',N'/api/municipio/:id/inactivacion',N'GET|PATCH|POST',N'backend'),
+	 (386,N'p',N'ADMINISTRADOR',N'/api/municipio/:id/inactivacion',N'GET|PATCH|POST',N'backend'),
+	 (387,N'p',N'PACIENTE',N'/api/municipio/departamento',N'GET|POST',N'backend'),
+	 (388,N'p',N'ADMINISTRADOR',N'/api/municipio/departamento',N'GET|POST',N'backend'),
+	 (389,N'p',N'ENCARGADO',N'/api/municipio/departamento',N'GET|POST',N'backend'),
+	 (390,N'p',N'PACIENTE',N'/api/municipio/departamento/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (391,N'p',N'ADMINISTRADOR',N'/api/municipio/departamento/:id',N'PATCH',N'backend'),
+	 (392,N'p',N'ENCARGADO',N'/api/municipio/departamento/:id',N'PATCH',N'backend'),
+	 (393,N'p',N'PACIENTE',N'/api/municipio/departamento/:id/activacion',N'PATCH',N'backend'),
+	 (394,N'p',N'ADMINISTRADOR',N'/api/municipio/departamento/:id/activacion',N'PATCH',N'backend'),
+	 (395,N'p',N'PACIENTE',N'/api/municipio/departamento/:id/inactivacion',N'PATCH',N'backend'),
+	 (396,N'p',N'ADMINISTRADOR',N'/api/municipio/departamento/:id/inactivacion',N'PATCH',N'backend'),
+	 (397,N'p',N'PACIENTE',N'/api/departamento',N'GET|POST',N'backend'),
+	 (398,N'p',N'ADMINISTRADOR',N'/api/departamento',N'GET|POST',N'backend'),
+	 (399,N'p',N'ENCARGADO',N'/api/departamento',N'GET|POST',N'backend'),
+	 (400,N'p',N'PACIENTE',N'/api/departamento/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (401,N'p',N'ADMINISTRADOR',N'/api/departamento/:id',N'PATCH',N'backend'),
+	 (402,N'p',N'ENCARGADO',N'/api/departamento/:id',N'PATCH',N'backend'),
+	 (403,N'p',N'PACIENTE',N'/api/departamento/:id/activacion',N'PATCH',N'backend'),
+	 (404,N'p',N'ADMINISTRADOR',N'/api/departamento/:id/activacion',N'PATCH',N'backend'),
+	 (405,N'p',N'ENCARGADO',N'/api/departamento/:id/activacion',N'PATCH',N'backend'),
+	 (406,N'p',N'PACIENTE',N'/api/departamento/:id/inactivacion',N'PATCH',N'backend'),
+	 (407,N'p',N'ADMINISTRADOR',N'/api/departamento/:id/inactivacion',N'PATCH',N'backend'),
+	 (408,N'p',N'ENCARGADO',N'/api/departamento/:id/inactivacion',N'PATCH',N'backend'),
+	 (409,N'p',N'PACIENTE',N'/api/dashboard/cards',N'GET',N'backend'),
+	 (410,N'p',N'ADMINISTRADOR',N'/api/dashboard/cards',N'GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (411,N'p',N'ENCARGADO',N'/api/dashboard/cards',N'GET',N'backend'),
+	 (412,N'p',N'MEDICO',N'/api/dashboard/cards',N'GET',N'backend'),
+	 (413,N'p',N'PACIENTE',N'/api/dashboard/chart',N'GET',N'backend'),
+	 (414,N'p',N'ADMINISTRADOR',N'/api/dashboard/chart',N'GET',N'backend'),
+	 (415,N'p',N'ENCARGADO',N'/api/dashboard/chart',N'GET',N'backend'),
+	 (416,N'p',N'MEDICO',N'/api/dashboard/chart',N'GET',N'backend'),
+	 (417,N'p',N'PACIENTE',N'/api/dashboard/bitacora',N'GET',N'backend'),
+	 (418,N'p',N'ADMINISTRADOR',N'/api/dashboard/bitacora',N'GET',N'backend'),
+	 (419,N'p',N'ENCARGADO',N'/api/dashboard/bitacora',N'GET',N'backend'),
+	 (420,N'p',N'MEDICO',N'/api/dashboard/bitacora',N'GET',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (421,N'p',N'PACIENTE',N'/api/dashboard/obtener-entidad/usuario',N'GET',N'backend'),
+	 (422,N'p',N'ADMINISTRADOR',N'/api/dashboard/obtener-entidad/usuario',N'GET',N'backend'),
+	 (423,N'p',N'ENCARGADO',N'/api/dashboard/obtener-entidad/usuario',N'GET',N'backend'),
+	 (424,N'p',N'MEDICO',N'/api/dashboard/obtener-entidad/usuario',N'GET',N'backend'),
+	 (425,N'p',N'ENCARGADO',N'/api/mientidad',N'GET|POST',N'backend'),
+	 (426,N'p',N'ENCARGADO',N'/api/entidades/image/remover/:id',N'PATCH',N'backend'),
+	 (427,N'p',N'PACIENTE',N'/api/entidades/:id/clicks',N'PATCH',N'backend'),
+	 (428,N'p',N'ADMINISTRADOR',N'/api/entidades/:id/clicks',N'PATCH',N'backend'),
+	 (429,N'p',N'ENCARGADO',N'/api/entidades/:id/clicks',N'PATCH',N'backend'),
+	 (430,N'p',N'MEDICO',N'/api/entidades/:id/clicks',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (431,N'p',N'USUARIO',N'/api/entidades/:id/clicks',N'PATCH',N'backend'),
+	 (432,N'p',N'PACIENTE',N'/api/responsables-unidad',N'GET|POST',N'backend'),
+	 (433,N'p',N'ADMINISTRADOR',N'/api/responsables-unidad',N'GET|POST',N'backend'),
+	 (434,N'p',N'ENCARGADO',N'/api/responsables-unidad',N'GET',N'backend'),
+	 (435,N'p',N'PACIENTE',N'/api/responsables-unidad/:id',N'PATCH',N'backend'),
+	 (436,N'p',N'ADMINISTRADOR',N'/api/responsables-unidad/:id',N'PATCH',N'backend'),
+	 (437,N'p',N'PACIENTE',N'/api/responsables-unidad/:id/activacion',N'PATCH',N'backend'),
+	 (438,N'p',N'ADMINISTRADOR',N'/api/responsables-unidad/:id/activacion',N'PATCH',N'backend'),
+	 (439,N'p',N'PACIENTE',N'/api/responsables-unidad/:id/inactivacion',N'PATCH',N'backend'),
+	 (440,N'p',N'ADMINISTRADOR',N'/api/responsables-unidad/:id/inactivacion',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (441,N'p',N'ENCARGADO',N'/api/usuarios/crear-persona-ciudadania',N'POST',N'backend'),
+	 (442,N'p',N'MEDICO',N'/api/usuarios/crear-persona-ciudadania',N'POST',N'backend'),
+	 (443,N'p',N'ENCARGADO',N'/api/usuarios/crear-persona-mae',N'POST',N'backend'),
+	 (444,N'p',N'MEDICO',N'/api/usuarios/crear-persona-mae',N'POST',N'backend'),
+	 (445,N'p',N'ENCARGADO',N'/api/usuarios/zip',N'POST',N'backend'),
+	 (446,N'p',N'MEDICO',N'/api/usuarios/zip',N'POST',N'backend'),
+	 (447,N'p',N'PACIENTE',N'/api/usuarios/generar/token',N'GET',N'backend'),
+	 (448,N'p',N'ADMINISTRADOR',N'/api/usuarios/generar/token',N'GET',N'backend'),
+	 (449,N'p',N'ENCARGADO',N'/api/usuarios/generar/token',N'GET',N'backend'),
+	 (450,N'p',N'PACIENTE',N'/api/usuarios/image/remover/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (451,N'p',N'ADMINISTRADOR',N'/api/usuarios/image/remover/:id',N'PATCH',N'backend'),
+	 (452,N'p',N'ENCARGADO',N'/api/usuarios/image/remover/:id',N'PATCH',N'backend'),
+	 (453,N'p',N'MEDICO',N'/api/usuarios/image/remover/:id',N'PATCH',N'backend'),
+	 (454,N'p',N'PACIENTE',N'/api/usuarios/verificar-entidad-usuario/:id',N'GET',N'backend'),
+	 (455,N'p',N'ADMINISTRADOR',N'/api/usuarios/verificar-entidad-usuario/:id',N'GET',N'backend'),
+	 (456,N'p',N'ENCARGADO',N'/api/usuarios/verificar-entidad-usuario/:id',N'GET',N'backend'),
+	 (457,N'p',N'MEDICO',N'/api/usuarios/verificar-entidad-usuario/:id',N'GET',N'backend'),
+	 (458,N'p',N'PACIENTE',N'/api/persona-contacto/image/remover/:id',N'PATCH',N'backend'),
+	 (459,N'p',N'ADMINISTRADOR',N'/api/persona-contacto/image/remover/:id',N'PATCH',N'backend'),
+	 (460,N'p',N'ENCARGADO',N'/api/persona-contacto/image/remover/:id',N'PATCH',N'backend');
+INSERT INTO prontobook.usuarios.casbin_rule (id,ptype,v0,v1,v2,v3) VALUES
+	 (461,N'p',N'MEDICO',N'/api/persona-contacto/image/remover/:id',N'PATCH',N'backend'),
+	 (462,N'p',N'ENCARGADO',N'/api/persona-contacto/listar-contacto-entidad/:id',N'GET',N'backend'),
+	 (463,N'p',N'MEDICO',N'/api/persona-contacto/listar-contacto-entidad/:id',N'GET',N'backend'),
+	 (464,N'p',N'ADMINISTRADOR',N'/api/sincronizar/entidades',N'PUT',N'backend'),
+	 (465,N'p',N'PACIENTE',N'/api/sincronizar/entidades',N'PUT',N'backend');

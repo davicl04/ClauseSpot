@@ -1,0 +1,8 @@
+﻿dist/
+node_modules/
+.husky/
+.vscode/
+.git/
+.prettierrc
+.env.sample
+.eslintrc.js
