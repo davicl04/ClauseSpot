@@ -1,7 +1,7 @@
 {
-  "name": "prontoapi",
+  "name": "clausespotapi",
   "version": "1.0.0",
-  "description": "api do prontobook",
+  "description": "api do clausespot",
   "main": "index.js",
   "scripts": {
     "start": "node dist/src/index.js",
