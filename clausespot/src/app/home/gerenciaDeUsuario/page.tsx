@@ -13,12 +13,14 @@ interface User {
   usuario: string;
   nome: string;
   email: string;
+  status: 'Ativo' | 'Inativo';
   criado_em: string;
 }
 
 // Dados mockados iniciais com a nova estrutura
 const initialUsers: User[] = [
-  
+  { id: 1, usuario: 'ana.s', nome: 'Ana Silva', email: 'ana.silva@example.com', status: 'Ativo', criado_em: new Date().toISOString() },
+  { id: 2, usuario: 'bruno.c', nome: 'Bruno Costa', email: 'bruno.costa@example.com', status: 'Inativo', criado_em: new Date().toISOString() },
 ];
 
 export default function ManagementPage() {
@@ -38,7 +40,6 @@ export default function ManagementPage() {
   }, []);
 
   useEffect(() => {
-    // Apenas salva no localStorage se os dados forem diferentes dos iniciais, para evitar sobrescrever na primeira carga
     if (users.length > 0 && JSON.stringify(users) !== JSON.stringify(initialUsers)) {
       try {
         window.localStorage.setItem('managedUsers', JSON.stringify(users));

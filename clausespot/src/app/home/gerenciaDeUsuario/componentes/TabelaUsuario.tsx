@@ -1,11 +1,11 @@
 import { RowTabelaUsuario} from './RowTabelaUsuario';
 
-// Dados de exemplo. No futuro, isso virá de uma API.
+// Dados de exemplo.
 const users = [
-  { id: 1, name: 'Ana Silva', email: 'ana.silva@example.com', role: 'Admin', status: 'Ativo' },
-  { id: 2, name: 'Bruno Costa', email: 'bruno.costa@example.com', role: 'Editor', status: 'Ativo' },
-  { id: 3, name: 'Carla Dias', email: 'carla.dias@example.com', role: 'Visualizador', status: 'Inativo' },
-  { id: 4, name: 'Daniel Martins', email: 'daniel.martins@example.com', role: 'Editor', status: 'Ativo' },
+  { id: 1, name: 'Davi Castilho', email: 'davi@email.com', status: 'Ativo' },
+  { id: 2, name: 'Leonardo Hilario', email: 'leonardo@email.com', status: 'Ativo' },
+  { id: 3, name: 'Gabriel Torezan', email: 'gabrielt@email.com', status: 'Ativo' },
+  { id: 4, name: 'Gabriel Vinente', email: 'gabrielv@email.com', status: 'Ativo' },
 ];
 
 export const TabelaUsuario = () => {

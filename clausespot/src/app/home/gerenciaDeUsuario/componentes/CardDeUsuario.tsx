@@ -8,6 +8,7 @@ interface User {
   usuario: string;
   nome: string;
   email: string;
+  status: 'Ativo' | 'Inativo';
   criado_em: string;
 }
 
@@ -18,10 +19,17 @@ interface PropsCardDeUsuario {
 }
 
 export const CardDeUsuario = ({ user, onEdit, onDelete }: PropsCardDeUsuario) => {
+  const statusIsActive = user.status === 'Ativo';
+  
   return (
     <Card className="shadow-md bg-white border border-gray-200 hover:shadow-lg transition-shadow flex flex-col justify-between">
       <CardContent className="p-6">
-        <h3 className="text-xl font-bold text-[#1A365D] mb-4">{user.nome}</h3>
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-xl font-bold text-[#1A365D]">{user.nome}</h3>
+          <span className={`py-1 px-3 rounded-full text-xs font-semibold ${statusIsActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+            {user.status}
+          </span>
+        </div>
         <div className="space-y-2 text-sm text-gray-600">
           <p>
             <span className="font-semibold">Usuário:</span> {user.usuario}
@@ -42,4 +50,3 @@ export const CardDeUsuario = ({ user, onEdit, onDelete }: PropsCardDeUsuario) =>
     </Card>
   );
 };
-
