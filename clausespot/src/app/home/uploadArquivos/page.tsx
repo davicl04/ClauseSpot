@@ -11,7 +11,7 @@ export default function uploadArquivos() {
     const [listaArquivos, setListaArquivos] = useState<any[]>([])
 
     useEffect(() => {
-        console.log("Lista de Arquivos Main: ", listaArquivos)
+        // console.log("Lista de Arquivos Main: ", listaArquivos)
     })
 
     return (
