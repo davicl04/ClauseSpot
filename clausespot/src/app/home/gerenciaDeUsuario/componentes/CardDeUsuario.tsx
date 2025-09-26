@@ -2,7 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
 
-// Interface atualizada para corresponder ao banco de dados
+// interface correspondente ao banco de dados
 interface User {
   id: number;
   usuario: string;

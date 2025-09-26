@@ -7,7 +7,7 @@ import { FormularioDoUsuario, type DadosDoFormulario } from './componentes/Formu
 import { CardDeUsuario } from './componentes/CardDeUsuario'; 
 import { Card } from '@/components/ui/card';
 
-// Interface atualizada para corresponder ao banco de dados
+// interface correspondente ao banco de dados
 interface User {
   id: number;
   usuario: string;
@@ -17,10 +17,10 @@ interface User {
   criado_em: string;
 }
 
-// Dados mockados iniciais com a nova estrutura
+// dados mockados iniciais
 const initialUsers: User[] = [
-  { id: 1, usuario: 'ana.s', nome: 'Ana Silva', email: 'ana.silva@example.com', status: 'Ativo', criado_em: new Date().toISOString() },
-  { id: 2, usuario: 'bruno.c', nome: 'Bruno Costa', email: 'bruno.costa@example.com', status: 'Inativo', criado_em: new Date().toISOString() },
+  { id: 1, usuario: 'davi.c', nome: 'Davi Castilho', email: 'davi@email.com', status: 'Ativo', criado_em: new Date().toISOString() },
+  { id: 2, usuario: 'gabriel.t', nome: 'Gabriel Torezan', email: 'gtorezan@email.com', status: 'Inativo', criado_em: new Date().toISOString() },
 ];
 
 export default function ManagementPage() {
@@ -53,17 +53,17 @@ export default function ManagementPage() {
   
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setEditingUser(null); // Limpa o usuário em edição ao fechar o modal
+    setEditingUser(null); // limpa o usuário em edição ao fechar o modal
   };
 
   const handleSaveUser = (data: DadosDoFormulario) => {
     if (editingUser) {
-      // Lógica de Edição
+      // lógica de edição
       setUsers(users.map(user => 
         user.id === editingUser.id ? { ...user, ...data } : user
       ));
     } else {
-      // Lógica de Criação
+      // lógica de criação
       const { senha, ...newUserData } = data;
       const newUser = {
         ...newUserData,
@@ -81,7 +81,7 @@ export default function ManagementPage() {
   };
 
   const handleDeleteUser = (userId: number) => {
-    // Em um app real, aqui viria um modal de confirmação ("Tem certeza?")
+    // implementação de um modal de confirmação ("Tem certeza?")
     setUsers(users.filter(user => user.id !== userId));
   };
 

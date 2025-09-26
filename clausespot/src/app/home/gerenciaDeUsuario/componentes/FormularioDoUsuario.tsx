@@ -7,7 +7,7 @@ export interface DadosDoFormulario {
   nome: string;
   email: string;
   status: 'Ativo' | 'Inativo';
-  senha?: string; // Senha é opcional na edição
+  senha?: string; // senha é opcional na edição
 }
 
 interface PropsFormDeUsuario {
@@ -25,15 +25,15 @@ export const FormularioDoUsuario = ({ initialData, onSave, onCancel }: PropsForm
     senha: '',
   });
 
-  // Efeito para preencher o formulário quando estiver em modo de edição
+  // efeito para preencher o formulário quando estiver em modo de edição
   useEffect(() => {
     if (initialData) {
       setDadosDoForm({
         ...initialData,
-        senha: '' // Sempre limpa o campo senha por segurança
+        senha: '' // sempre limpa o campo senha por segurança
       });
     } else {
-      // Limpa o formulário se não houver dados iniciais (modo de criação)
+      // limpa o formulário se não houver dados iniciais (modo de criação)
        setDadosDoForm({ usuario: '', nome: '', email: '', status: 'Ativo', senha: '' });
     }
   }, [initialData]);
