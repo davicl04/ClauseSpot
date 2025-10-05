@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { FeatureCard } from "@/app/home/search/componentes/FeatureCard";
-import { SearchSection } from "@/app/home/search/componentes/SearchSection";
+import { FeatureCard } from "./componentes/FeatureCard";
+import { SearchSection } from "./componentes/SearchSection";
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState('');

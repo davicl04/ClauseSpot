@@ -1,9 +1,9 @@
 import { Search, Filter, X } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
-import { Input } from '../../../../components/ui/input'; 
-import { Button } from '../../../../components/ui/button';
-import { Card, CardContent } from '../../../../components/ui/card';
+import { Input } from '@/components/ui/input'; 
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface SearchSectionProps {
   searchTerm: string;
