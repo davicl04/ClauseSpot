@@ -1,24 +1,17 @@
+// src/app/home/gerenciaDeUsuario/componentes/CardDeUsuario.tsx
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
+import type { User } from '../page'; // Importando o tipo User da página principal
 
-// interface correspondente ao banco de dados
-interface User {
-  id: number;
-  usuario: string;
-  nome: string;
-  email: string;
-  status: 'Ativo' | 'Inativo';
-  criado_em: string;
-}
-
-interface PropsCardDeUsuario {
+interface CardDeUsuarioProps {
   user: User;
   onEdit: () => void;
   onDelete: () => void;
 }
 
-export const CardDeUsuario = ({ user, onEdit, onDelete }: PropsCardDeUsuario) => {
+export const CardDeUsuario = ({ user, onEdit, onDelete }: CardDeUsuarioProps) => {
   const statusIsActive = user.status === 'Ativo';
   
   return (
@@ -37,13 +30,20 @@ export const CardDeUsuario = ({ user, onEdit, onDelete }: PropsCardDeUsuario) =>
           <p>
             <span className="font-semibold">E-mail:</span> {user.email}
           </p>
+          <p>
+            <span className="font-semibold">Criado em:</span> {new Date(user.criado_em).toLocaleDateString('pt-BR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })}
+          </p>
         </div>
       </CardContent>
       <div className="border-t p-4 flex justify-end gap-2 bg-gray-50/50">
-        <Button variant="outline" size="sm" onClick={onEdit} className="h-8 w-8 p-0">
+        <Button variant="outline" size="icon" onClick={onEdit} className="h-8 w-8">
             <Edit className="h-4 w-4 text-gray-600" />
         </Button>
-        <Button variant="outline" size="sm" onClick={onDelete} className="h-8 w-8 p-0 text-red-500 hover:bg-red-50 hover:text-red-600">
+        <Button variant="outline" size="icon" onClick={onDelete} className="h-8 w-8 text-red-500 hover:bg-red-50 hover:text-red-600">
             <Trash2 className="h-4 w-4" />
         </Button>
       </div>

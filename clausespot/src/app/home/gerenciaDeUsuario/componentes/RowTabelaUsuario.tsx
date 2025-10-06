@@ -9,6 +9,7 @@ export const RowTabelaUsuario = ({ user }: { user: any }) => {
       <td className="py-3 px-4">{user.name}</td>
       <td className="py-3 px-4">{user.email}</td>
       <td className="py-3 px-4">{user.role}</td>
+      
       <td className="py-3 px-4">
         <span className={`py-1 px-3 rounded-full text-xs ${statusColor}`}>
           {user.status}
