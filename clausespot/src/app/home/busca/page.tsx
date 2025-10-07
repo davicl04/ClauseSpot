@@ -1,29 +1,29 @@
 "use client";
 import { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { FeatureCard } from "./componentes/FeatureCard";
-import { SearchSection } from "./componentes/SearchSection";
+import { CardDeBusca } from "./componentes/CardDeBusca";
+import { SecaoDeBusca } from "./componentes/SecaoDeBusca";
 
-export default function SearchPage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('search');
+export default function PaginaDebusca() {
+  const [termoDeBusca, setTermoDebusca] = useState('');
+  const [filtroAberto, setIsFiltroAberto] = useState(false);
+  const [secaoAtiva, setSecaoAtiva] = useState('search');
 
-  const handleSearch = () => console.log('Buscando por:', searchTerm);
-  const handleClear = () => setSearchTerm('');
-  const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
-  const handleSectionClick = (section: string) => setActiveSection(section);
+  const handleBusca= () => console.log('Buscando por:', termoDeBusca);
+  const handleLimpar = () => setTermoDebusca('');
+  const toggleFiltro = () => setIsFiltroAberto(!filtroAberto);
+  const handleSectionClick = (section: string) => setSecaoAtiva(section);
 
-  const renderActiveSection = () => {
-    switch (activeSection) {
+  const renderSecaoAtiva = () => {
+    switch (secaoAtiva) {
       case 'search':
-        return <SearchSection 
-          searchTerm={searchTerm} 
-          setSearchTerm={setSearchTerm}
-          isFilterOpen={isFilterOpen}
-          toggleFilter={toggleFilter}
-          handleSearch={handleSearch}
-          handleClear={handleClear}
+        return <SecaoDeBusca 
+          termoDeBusca={termoDeBusca} 
+          setTermoDeBusca={setTermoDebusca}
+          filtroAberto={filtroAberto}
+          toggleFiltro={toggleFiltro}
+          handleBusca={handleBusca}
+          handleLimpar={handleLimpar}
         />;
       default:
         return null;
@@ -48,13 +48,13 @@ export default function SearchPage() {
 
         {/* Controle de navegação cards do Feature */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <FeatureCard title="Pesquisar Contratos" description="Encontre contratos rapidamente usando palavras chave ou filtros avançados." onClick={() => handleSectionClick('search')} />
-            <FeatureCard title="Analisar Cláusulas" description="Identifique e analise cláusulas específicas em seus contratos com facilidade." onClick={() => handleSectionClick('analyze')} />
-            <FeatureCard title="Gerar Relatórios" description="Crie relatórios detalhados sobre os contratos pesquisados para melhor tomada de decisão." onClick={() => handleSectionClick('reports')} />
+            <CardDeBusca titulo ="Pesquisar Contratos" descricao="Encontre contratos rapidamente usando palavras chave ou filtros avançados." onClick={() => handleSectionClick('search')} />
+            <CardDeBusca titulo ="Analisar Cláusulas" descricao="Identifique e analise cláusulas específicas em seus contratos com facilidade." onClick={() => handleSectionClick('analyze')} />
+            <CardDeBusca titulo ="Gerar Relatórios" descricao="Crie relatórios detalhados sobre os contratos pesquisados para melhor tomada de decisão." onClick={() => handleSectionClick('reports')} />
         </div>
 
         {/* Seção Dinâmica Renderizada */}
-        {renderActiveSection()}
+        {renderSecaoAtiva()}
       </div>
     </div>
   );
