@@ -9,7 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { create } from 'domain';
 
-// 1. Schema base (campos comuns)
+// Schema base (campos comuns)
 const baseSchema = z.object({
   usuario: z.string().min(3, { message: "Usuário deve ter no mínimo 3 caracteres." }),
   nome: z.string().min(3, { message: "Nome deve ter no mínimo 3 caracteres." }),
@@ -17,12 +17,10 @@ const baseSchema = z.object({
   status: z.enum(['Ativo', 'Inativo']),
 });
 
-// 2. Schema para CRIAR usuário (senha obrigatória)
 const createUserSchema = baseSchema.extend({
   senha: z.string().min(6, { message: "A senha precisa ter no mínimo 6 caracteres." }),
 });
 
-// 3. Schema para EDITAR usuário (senha opcional)
 const editUserSchema = baseSchema.extend({
   senha: z.string()
     .optional()
@@ -31,12 +29,10 @@ const editUserSchema = baseSchema.extend({
     }),
 });
 
-// 4. Tipo unificado para o formulário. Usamos 'partial' para a senha ser opcional no tipo.
 export type DadosDoFormulario = z.infer<typeof baseSchema> & {
   senha?: string;
 };
 
-// Props do componente
 interface PropsFormDeUsuario {
   initialData?: DadosDoFormulario | null;
   onSave: (data: DadosDoFormulario) => void;
@@ -76,15 +72,12 @@ export const FormularioDoUsuario = ({ initialData, onSave, onCancel }: PropsForm
     }
   }, [initialData, form.reset]);
   
-  // Função de wrapper para o onSave, para garantir que os dados estão corretos
   const onSubmit = (data: DadosDoFormulario) => {
     onSave(data);
   };
 
   return (
-    // O erro no 'control' deve desaparecer pois o 'form' agora está corretamente tipado
     <Form {...form}>
-      {/* O erro no 'onSave' deve desaparecer pois agora usamos 'onSubmit' */}
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
