@@ -1,26 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcrypt';
+import fs from 'fs';
+import path from 'path';
+
+// Define o caminho para o arquivo de usuários
+const usersFilePath = path.join(process.cwd(), 'data', 'users.json');
+
+const readUsers = () => {
+  try {
+    const fileContent = fs.readFileSync(usersFilePath, 'utf-8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error("Erro ao ler o arquivo de usuários:", error);
+    return []; // Retorna um array vazio em caso de erro
+  }
+};
 
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
-    console.log("Received email: ", email, " password: ", password);
+    
+    const users = readUsers();
+    
+    // 1. Encontrar o usuário pelo e-mail no arquivo JSON
+    const user = users.find((u: any) => u.email === email);
 
-    const response = await fetch('http://localhost:3001/users/validateUser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        senha: password,
-      }),
-    });
+    if (!user) {
+      return NextResponse.json({ valid: false, message: 'Email ou senha inválidos' });
+    }
 
-    const data = await response.json();
-    console.log("Validation response data: ", data);
+    // 2. Comparar a senha fornecida com a senha criptografada (hash)
+    const isPasswordCorrect = await bcrypt.compare(password, user.senhaHash);
 
-    return NextResponse.json(data);
+    if (isPasswordCorrect) {
+      // 3. Se a senha estiver correta, retorna a resposta que o frontend espera
+      const { senhaHash, ...userToReturn } = user;
+      return NextResponse.json({ valid: true, user: userToReturn });
+    } else {
+      // Se a senha estiver incorreta
+      return NextResponse.json({ valid: false, message: 'Email ou senha inválidos' });
+    }
+
   } catch (error) {
+    console.error('Erro na API /api/login:', error);
     return NextResponse.json(
       { 
         valid: false, 

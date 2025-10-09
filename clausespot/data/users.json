@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "nome": "Davi Castilho Lopes",
+    "email": "davicastilho040@gmail.com",
+    "usuario": "davicl",
+    "status": "Ativo",
+    "criado_em": "2025-10-09T20:50:01.931Z",
+    "senhaHash": "$2b$10$7LDJviFFZUycEW/W9UcjWOyo4gKVjzfOuMZ3HhDiOB/W.NvDKGh0O"
+  }
+]

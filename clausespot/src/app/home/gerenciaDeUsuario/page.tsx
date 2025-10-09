@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { UserPlus } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -8,9 +9,12 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { FormularioDoUsuario, type DadosDoFormulario } from './componentes/FormularioDoUsuario';
 import { CardDeUsuario } from './componentes/CardDeUsuario';
+import { set } from 'zod';
+
 
 // Interface que define a estrutura de dados de um usuário na aplicação.
 export interface User {
@@ -23,13 +27,13 @@ export interface User {
 }
 
 // Estado inicial vazio para os usuários.
-const initialUsers: User[] = [];
+// const initialUsers: User[] = [];
 
 export default function ManagementPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Armazena o usuário completo que está sendo editado, ou null se for um novo cadastro.
   const [editingUser, setEditingUser] = useState<User | null>(null);
-  const [users, setUsers] = useState<User[]>(initialUsers);
+  const [users, setUsers] = useState<User[]>( [] );
 
   // Efeito para carregar os usuários do localStorage ao iniciar o componente.
   useEffect(() => {
@@ -45,16 +49,25 @@ export default function ManagementPage() {
 
   // Efeito para salvar os usuários no localStorage sempre que a lista for alterada.
   useEffect(() => {
-    // Evita salvar o estado inicial vazio na primeira renderização.
-    if (users.length > 0 || localStorage.getItem('managedUsers')) {
+    // Função para buscar os usuários da nossa API
+    const fetchUsers = async () => {
       try {
-        window.localStorage.setItem('managedUsers', JSON.stringify(users));
+        const response = await fetch('/api/users');
+        if (!response.ok) {
+          throw new Error('Falha ao buscar usuários');
+        }
+        const data = await response.json();
+        setUsers(data); // Atualiza o estado com os usuários do arquivo JSON
       } catch (error) {
-        console.error("Erro ao salvar usuários no localStorage", error);
+        console.error(error);
+        toast.error('Não foi possível carregar a lista de usuários.');
       }
-    }
-  }, [users]);
+    };
 
+    fetchUsers(); // Chama a função ao carregar o componente
+  }, []); // O array vazio [] garante que isso rode apenas uma vez
+
+  // ... (o restante do seu código, como handleSaveUser, handleOpenModal, etc., permanece o mesmo)
   const handleOpenModal = (user: User | null) => {
     setEditingUser(user);
     setIsModalOpen(true);
@@ -64,38 +77,54 @@ export default function ManagementPage() {
     setIsModalOpen(false);
     setEditingUser(null);
   };
-
-  // Função para criar ou atualizar um usuário, recebendo dados do formulário.
-  const handleSaveUser = (data: DadosDoFormulario) => {
-    // A senha é separada pois não deve ser armazenada no estado principal.
-    const { senha, ...userData } = data;
-
+  
+    const handleSaveUser = async (data: any) => {
     if (editingUser) {
-      // MODO EDIÇÃO: Atualiza o usuário existente.
+      // LÓGICA DE EDIÇÃO (ainda pode ser local ou chamar uma API PUT/PATCH)
       setUsers(users.map(user =>
-        user.id === editingUser.id
-          ? { ...user, ...userData }
-          : user
+        user.id === editingUser.id ? { ...user, ...data } : user
       ));
+      toast.success("Usuário atualizado com sucesso!");
+
     } else {
-      // MODO CRIAÇÃO: Adiciona um novo usuário à lista.
-      const newUser: User = {
-        ...userData,
-        id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
-        criado_em: new Date().toISOString(),
-      };
-      setUsers(prevUsers => [...prevUsers, newUser]);
+      // LÓGICA DE CRIAÇÃO (chama a nossa nova API)
+      try {
+        const response = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data), // Envia os dados completos do formulário
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          // Se a API retornar um erro (ex: e-mail duplicado), mostra a mensagem
+          throw new Error(result.message || 'Falha ao criar usuário.');
+        }
+
+        // Adiciona o novo usuário retornado pela API ao estado da página
+        setUsers(prevUsers => [...prevUsers, result]);
+        toast.success("Usuário cadastrado com sucesso!");
+        
+      } catch (error) {
+        console.error(error);
+        const errorMessage = error instanceof Error ? error.message : 'Ocorreu um erro desconhecido.';
+        toast.error(errorMessage); // Usa o toast para mostrar o erro
+        return; // Impede o fechamento do modal em caso de erro
+      }
     }
     handleCloseModal();
   };
-
-  const handleDeleteUser = (userId: number) => {
+  
+    const handleDeleteUser = (userId: any) => {
     if (confirm('Tem certeza que deseja excluir este usuário?')) {
-      setUsers(users.filter(user => user.id !== userId));
+        setUsers(users.filter(user => user.id !== userId));
     }
   };
 
+
   return (
+      // ... seu JSX continua aqui
     <div className="min-h-screen w-full bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
@@ -130,7 +159,7 @@ export default function ManagementPage() {
           <DialogHeader>
             <DialogTitle>{editingUser ? 'Editar Usuário' : 'Cadastrar Novo Usuário'}</DialogTitle>
           </DialogHeader>
-          {/* O formulário recebe os dados iniciais para edição ou null para criação. */}
+          {/* 4. Passando os dados corretamente. `editingUser` é compatível com `initialData` */}
           <FormularioDoUsuario
             onSave={handleSaveUser}
             onCancel={handleCloseModal}
