@@ -1,5 +1,3 @@
-// Em: src/app/home/gerenciaDeUsuario/page.tsx
-
 "use client";
 import { useEffect, useState } from 'react';
 import { UserPlus } from 'lucide-react';
@@ -14,7 +12,7 @@ import {
 import { FormularioDoUsuario, type DadosDoFormulario } from './componentes/FormularioDoUsuario';
 import { CardDeUsuario } from './componentes/CardDeUsuario';
 
-// 1. Interface principal para o estado do usuário
+// Interface que define a estrutura de dados de um usuário na aplicação.
 export interface User {
   id: number;
   usuario: string;
@@ -24,16 +22,16 @@ export interface User {
   criado_em: Date | string;
 }
 
-// Dados mockados iniciais
-const initialUsers: User[] = [ ];
+// Estado inicial vazio para os usuários.
+const initialUsers: User[] = [];
 
 export default function ManagementPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // O estado de edição continua usando o tipo User, que é o objeto completo
+  // Armazena o usuário completo que está sendo editado, ou null se for um novo cadastro.
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>(initialUsers);
 
-  // Hooks useEffect para localStorage permanecem os mesmos...
+  // Efeito para carregar os usuários do localStorage ao iniciar o componente.
   useEffect(() => {
     try {
       const storedUsers = window.localStorage.getItem('managedUsers');
@@ -45,9 +43,10 @@ export default function ManagementPage() {
     }
   }, []);
 
+  // Efeito para salvar os usuários no localStorage sempre que a lista for alterada.
   useEffect(() => {
-    // Evita salvar no LS na primeira renderização se os dados forem os mockados
-    if (users.length > 0 && JSON.stringify(users) !== JSON.stringify(initialUsers)) {
+    // Evita salvar o estado inicial vazio na primeira renderização.
+    if (users.length > 0 || localStorage.getItem('managedUsers')) {
       try {
         window.localStorage.setItem('managedUsers', JSON.stringify(users));
       } catch (error) {
@@ -55,7 +54,6 @@ export default function ManagementPage() {
       }
     }
   }, [users]);
-
 
   const handleOpenModal = (user: User | null) => {
     setEditingUser(user);
@@ -67,23 +65,22 @@ export default function ManagementPage() {
     setEditingUser(null);
   };
 
-  // 2. Função de salvar ajustada para receber 'DadosDoFormulario'
+  // Função para criar ou atualizar um usuário, recebendo dados do formulário.
   const handleSaveUser = (data: DadosDoFormulario) => {
-    // A 'senha' vem do formulário, mas não é armazenada no nosso estado 'users'.
-    // Usamos a desestruturação para separar a senha do resto dos dados.
+    // A senha é separada pois não deve ser armazenada no estado principal.
     const { senha, ...userData } = data;
 
     if (editingUser) {
-      // MODO EDIÇÃO
+      // MODO EDIÇÃO: Atualiza o usuário existente.
       setUsers(users.map(user =>
         user.id === editingUser.id
-          ? { ...user, ...userData } // Atualiza o usuário existente com os novos dados do formulário
+          ? { ...user, ...userData }
           : user
       ));
     } else {
-      // MODO CRIAÇÃO
+      // MODO CRIAÇÃO: Adiciona um novo usuário à lista.
       const newUser: User = {
-        ...userData, // usa os dados do formulário (sem a senha)
+        ...userData,
         id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
         criado_em: new Date().toISOString(),
       };
@@ -92,10 +89,9 @@ export default function ManagementPage() {
     handleCloseModal();
   };
 
-  // 3. A função de deletar não precisa de alterações
   const handleDeleteUser = (userId: number) => {
     if (confirm('Tem certeza que deseja excluir este usuário?')) {
-        setUsers(users.filter(user => user.id !== userId));
+      setUsers(users.filter(user => user.id !== userId));
     }
   };
 
@@ -134,7 +130,7 @@ export default function ManagementPage() {
           <DialogHeader>
             <DialogTitle>{editingUser ? 'Editar Usuário' : 'Cadastrar Novo Usuário'}</DialogTitle>
           </DialogHeader>
-          {/* 4. Passando os dados corretamente. `editingUser` é compatível com `initialData` */}
+          {/* O formulário recebe os dados iniciais para edição ou null para criação. */}
           <FormularioDoUsuario
             onSave={handleSaveUser}
             onCancel={handleCloseModal}

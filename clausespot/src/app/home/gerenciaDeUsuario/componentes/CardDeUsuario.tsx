@@ -1,5 +1,3 @@
-// src/app/home/gerenciaDeUsuario/componentes/CardDeUsuario.tsx
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
