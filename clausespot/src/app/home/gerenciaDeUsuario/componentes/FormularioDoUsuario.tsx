@@ -9,7 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { create } from 'domain';
 
-// Schema base (campos comuns)
+// Schema base
 const baseSchema = z.object({
   usuario: z.string().min(3, { message: "Usuário deve ter no mínimo 3 caracteres." }),
   nome: z.string().min(3, { message: "Nome deve ter no mínimo 3 caracteres." }),
@@ -42,7 +42,6 @@ interface PropsFormDeUsuario {
 export const FormularioDoUsuario = ({ initialData, onSave, onCancel }: PropsFormDeUsuario) => {
   const isEditing = !!initialData;
 
-  // 5. Escolha o schema de validação correto ANTES de inicializar o formulário
   const form = useForm<DadosDoFormulario>({
     resolver: zodResolver(isEditing ? editUserSchema : createUserSchema),
     defaultValues: initialData || {
@@ -54,12 +53,11 @@ export const FormularioDoUsuario = ({ initialData, onSave, onCancel }: PropsForm
     },
   });
 
-  // Reseta o formulário se os dados iniciais mudarem (ex: fechar e abrir modal de novo)
   useEffect(() => {
     if (initialData) {
       form.reset({
         ...initialData,
-        senha: '', // Sempre limpa a senha por segurança
+        senha: '',
       });
     } else {
       form.reset({
