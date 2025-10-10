@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     const { email, password } = await request.json();
     console.log("Received email: ", email, " password: ", password);
 
-    const response = await fetch('http://localhost:3001/users/validateUser', {
+    const response = await fetch('http://localhost:3001/api/validateUser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
