@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 import {
     Dialog,
@@ -36,34 +37,42 @@ export function ModalAdicionarArquivo({ listaArquivos, setListaArquivos }: Props
     }
 
     return (
-        <div className="flex justfy-end">
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger asChild>
-                    <Button className="bg-blue-500 text-white font-semibold py-1 px-3 rounded-lg mt-2 mb-2 mr-2  hover:bg-sky-600">
-                        Adicionar Arquivo
-                    </Button>
-                </DialogTrigger>
+        <div className="w-full min-h-[200px] flex items-center justify-center py-8 px-4">
+            <Card className="max-w-md w-full border" style={{ borderColor: '#C69F66', borderWidth: '1.5px' }}>
+                <CardHeader>
+                    <CardTitle className="text-center">Adicionar Arquivo</CardTitle>
+                    <CardDescription>
+                        Nesta tela, você pode enviar arquivos que servirão de base para o agente de IA compreender melhor seus pedidos e gerar respostas mais precisas. Clique no botão abaixo para abrir o formulário de envio.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                    <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogTrigger asChild>
+                            <Button className="w-full mx-3 bg-[#1A365D] text-white py-3 rounded-md hover:opacity-90 hover:bg-[#1A365D] transition-opacity">Adicionar Arquivo</Button>
+                        </DialogTrigger>
 
-                <DialogContent className="w-3/4 rounded-md">
-                    <DialogHeader>
-                        <DialogTitle>Faça o upload de um arquivo</DialogTitle>
-                        <DialogDescription>
-                            Preencha os campos abaixo:
-                        </DialogDescription>
-                    </DialogHeader>
+                        <DialogContent className="w-full max-w-2xl rounded-md">
+                            <DialogHeader>
+                                <DialogTitle>Faça o upload de um arquivo</DialogTitle>
+                                <DialogDescription>
+                                    Preencha os campos abaixo:
+                                </DialogDescription>
+                            </DialogHeader>
 
-                    <FormAdicionarArquivo 
-                        setPendent={changePendentStatus} 
-                        closeDialog={closeDialog} 
-                        listaArquivos={listaArquivos}
-                        setListaArquivos={setListaArquivos}
-                    >
-                        <DialogClose asChild>
-                            <Button disabled={pendent} className="w-[20%] xs:w-[40%] bg-transparent border border-red-500 text-red-500 hover:bg-red-500 hover:text-white">Cancelar</Button>
-                        </DialogClose>
-                    </FormAdicionarArquivo>
-                </DialogContent>
-            </Dialog>
+                            <FormAdicionarArquivo 
+                                setPendent={changePendentStatus} 
+                                closeDialog={closeDialog} 
+                                listaArquivos={listaArquivos}
+                                setListaArquivos={setListaArquivos}
+                            >
+                                <DialogClose asChild>
+                                    <Button disabled={pendent} variant="outline" className="w-[20%] xs:w-[40%]">Cancelar</Button>
+                                </DialogClose>
+                            </FormAdicionarArquivo>
+                        </DialogContent>
+                    </Dialog>
+                </CardContent>
+            </Card>
         </div>
     )
 }

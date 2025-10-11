@@ -43,15 +43,32 @@ export default function LoginPage() {
 
   function handleAuthSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (authCode === "123") {
-      if (userInfo) {
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        localStorage.setItem('isAuthenticated', 'true');
+    (async () => {
+      if (!userInfo || !userInfo.email) {
+        setAuthError("Email do usuário não disponível para verificação");
+        return;
       }
-      window.location.href = "/home";
-    } else {
-      setAuthError("Código de autenticação inválido");
-    }
+
+      try {
+        const res = await fetch('/api/verify2fa', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userInfo.email, code: authCode }),
+        });
+
+        const result = await res.json();
+
+        if (result && result.success === true) {
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          localStorage.setItem('isAuthenticated', 'true');
+          window.location.href = '/home';
+        } else {
+          setAuthError(result?.message || 'Código de autenticação inválido');
+        }
+      } catch (err) {
+        setAuthError('Erro ao verificar código. Tente novamente.');
+      }
+    })();
   }
 
   function handleCancelAuth() {
@@ -77,7 +94,7 @@ export default function LoginPage() {
           <div className="modal-content">
             <h3>Autenticação de Dois Fatores</h3>
             <form onSubmit={handleAuthSubmit}>
-              <p>Digite o código de autenticação</p>
+              <p>Um código de autenticação foi enviado ao seu Email.</p>
               {authError && <div className="auth-error">{authError}</div>}
               <input
                 type="text"
